@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #594c45; background: #f3eee7; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+html, body, #root { min-width: 320px; min-height: 100%; margin: 0; }
+button, textarea, input { font: inherit; }
+.app-shell { min-height: 100dvh; display: grid; grid-template-columns: 270px minmax(0, 1fr); }
+.stage { min-width: 0; }
+.phone { width: min(390px, 46.2085dvh); position: relative; }
+.artboard { width: 390px; height: 844px; position: absolute; inset: 0 auto auto 0; transform-origin: top left; }
+.design-layer, .interaction-layer { width: 390px; height: 844px; position: absolute; inset: 0; }
+.design-layer > svg { display: block; }
+.interaction-layer { pointer-events: none; overflow: visible; }
+.interaction-layer foreignObject, .interaction-layer foreignObject * { pointer-events: auto; }
+.interaction-layer rect[role="button"] { transform-box: fill-box; transform-origin: center; }
+.interaction-layer rect[role="button"]:active { transform: scale(.96); }
+.design-layer g[id^="情绪角色-"] image, .motion-mascot { transform-box: fill-box; transform-origin: center; animation: mascot-float 2.8s ease-in-out infinite; }
+.design-layer g[id="情绪角色-难过"] image, .motion-mascot:nth-of-type(2) { animation-delay: .4s; }
+.design-layer g[id="情绪角色-生气"] image, .motion-mascot:nth-of-type(3) { animation-delay: .75s; }
+.selection-pulse { transform-box: fill-box; transform-origin: center; animation: selection-breathe 1.7s ease-in-out infinite; }
+@keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes selection-breathe { 0%, 100% { opacity: .62; } 50% { opacity: 1; } }
+@media (max-width: 767px) {
+  :root { background: #fff9f0; }
+  html, body, #root { min-height: 100dvh; }
+  .app-shell { display: block; min-height: 100dvh; padding: 0; background: #fff9f0; }
+  .stage { min-height: 100dvh; }
+  .phone { width: min(100vw, 46.2085dvh); box-shadow: none; }
+}
